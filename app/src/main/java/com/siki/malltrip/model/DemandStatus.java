@@ -1,6 +1,6 @@
 package com.siki.malltrip.model;
 
-public enum ItemStatus {
+public enum DemandStatus {
     REQUIRED,
     IN_CART,
     PAYED

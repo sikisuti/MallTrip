@@ -1,19 +1,16 @@
 package com.siki.malltrip;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.siki.malltrip.data.DBManagerImpl;
 import com.siki.malltrip.data.DataService;
-import com.siki.malltrip.data.DataServiceImpl;
-import com.siki.malltrip.model.Item;
+import com.siki.malltrip.model.Demand;
+import com.siki.malltrip.model.Product;
 
 public class MainActivity extends AppCompatActivity {
     DataService dataService;
@@ -29,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         itemList = findViewById(R.id.itemList);
 
-        dataService = new DataServiceImpl(new DBManagerImpl());
+        dataService = ((MallTripApp) getApplication()).getDataService();
 
         Log.d(TAG, "onCreate: run");
     }
@@ -39,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         itemList.removeAllViews();
-        for(Item item : dataService.getRequiredItems()) {
-            TextView itemView = new TextView(this);
-            itemView.setText(item.getName());
-            itemList.addView(itemView);
+        for(Demand demand : dataService.getRequiredProducts()) {
+            TextView productView = new TextView(this);
+            productView.setText(demand.getProduct().getName());
+            itemList.addView(productView);
         }
     }
 

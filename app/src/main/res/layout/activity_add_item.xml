@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".AddItemActivity">
 
+    <AutoCompleteTextView
+        android:id="@+id/itemPicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/select_item"
+        android:completionThreshold="1"/>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"

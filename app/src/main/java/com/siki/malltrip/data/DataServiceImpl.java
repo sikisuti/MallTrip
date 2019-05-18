@@ -1,6 +1,9 @@
 package com.siki.malltrip.data;
 
-import com.siki.malltrip.model.Item;
+import android.util.Log;
+
+import com.siki.malltrip.model.Demand;
+import com.siki.malltrip.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,16 +11,22 @@ import java.util.List;
 public class DataServiceImpl implements DataService {
     DBManager dbManager;
 
-    List<Item> requiredItems = new ArrayList<>();
+    List<Demand> requiredProducts = new ArrayList<>();
+    List<Product> products = new ArrayList<>();
 
     public DataServiceImpl(DBManager dbManager) {
         this.dbManager = dbManager;
-        requiredItems = dbManager.getRequiredItems();
-
+        requiredProducts = dbManager.getRequiredProducts();
+        products = dbManager.getProducts();
     }
 
     @Override
-    public List<Item> getRequiredItems() {
-        return requiredItems;
+    public List<Demand> getRequiredProducts() {
+        return requiredProducts;
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        return products;
     }
 }

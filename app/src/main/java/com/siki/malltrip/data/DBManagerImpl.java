@@ -1,41 +1,83 @@
 package com.siki.malltrip.data;
 
-import com.siki.malltrip.model.Item;
-import com.siki.malltrip.model.ItemStatus;
+import com.siki.malltrip.model.Demand;
+import com.siki.malltrip.model.Product;
+import com.siki.malltrip.model.DemandStatus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBManagerImpl implements DBManager {
     @Override
-    public List<Item> getRequiredItems() {
-        List<Item> items = new ArrayList<>();
+    public List<Demand> getRequiredProducts() {
+        List<Demand> Demands = new ArrayList<>();
 
-        items.add(new Item.Builder()
+        Demands.add(new Demand.Builder()
+                .setProduct(new Product.Builder()
+                    .setName("Joghurt")
+                    .build())
+                .setDemandStatus(DemandStatus.REQUIRED)
+                .build());
+
+        Demands.add(new Demand.Builder()
+                .setProduct(new Product.Builder()
+                        .setName("Sajt")
+                        .build())
+                .setDemandStatus(DemandStatus.REQUIRED)
+                .build());
+
+        Demands.add(new Demand.Builder()
+                .setProduct(new Product.Builder()
+                        .setName("Mosópor")
+                        .build())
+                .setDemandStatus(DemandStatus.REQUIRED)
+                .build());
+
+        Demands.add(new Demand.Builder()
+                .setProduct(new Product.Builder()
+                        .setName("Cipő")
+                        .build())
+                .setDemandStatus(DemandStatus.REQUIRED)
+                .build());
+
+        Demands.add(new Demand.Builder()
+                .setProduct(new Product.Builder()
+                        .setName("Alma")
+                        .build())
+                .setDemandStatus(DemandStatus.REQUIRED)
+                .build());
+
+        return Demands;
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        List<Product> products = new ArrayList<>();
+
+        products.add(new Product.Builder()
                 .setName("Joghurt")
-                .setStatus(ItemStatus.REQUIRED)
                 .build());
 
-        items.add(new Item.Builder()
+        products.add(new Product.Builder()
                 .setName("Sajt")
-                .setStatus(ItemStatus.REQUIRED)
                 .build());
 
-        items.add(new Item.Builder()
+        products.add(new Product.Builder()
                 .setName("Mosópor")
-                .setStatus(ItemStatus.REQUIRED)
                 .build());
 
-        items.add(new Item.Builder()
+        products.add(new Product.Builder()
                 .setName("Cipő")
-                .setStatus(ItemStatus.REQUIRED)
                 .build());
 
-        items.add(new Item.Builder()
+        products.add(new Product.Builder()
                 .setName("Alma")
-                .setStatus(ItemStatus.REQUIRED)
                 .build());
 
-        return items;
+        products.add(new Product.Builder()
+                .setName("Asztal")
+                .build());
+
+        return products;
     }
 }
