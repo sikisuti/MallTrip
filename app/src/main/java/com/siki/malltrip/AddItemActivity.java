@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 public class AddItemActivity extends AppCompatActivity {
     private DataService dataService;
     private static final List<String> items = new ArrayList<>();
-    private AutoCompleteTextView itemPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +21,10 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         dataService =((MallTripApp) getApplication()).getDataService();
-
-        itemPicker = findViewById(R.id.itemPicker);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                dataService.getProducts().stream().map(i -> i.getName()).collect(Collectors.toList()));
-
-        itemPicker.setAdapter(adapter);
     }
 }
