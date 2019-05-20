@@ -19,7 +19,7 @@
             android:orientation="horizontal">
 
             <AutoCompleteTextView
-                android:id="@+id/itemPicker"
+                android:id="@+id/categoryPicker"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

@@ -1,6 +1,5 @@
 package com.siki.malltrip;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,16 +7,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.siki.malltrip.data.DataService;
+import com.siki.malltrip.model.Category;
 import com.siki.malltrip.model.Demand;
 import com.siki.malltrip.view.DemandListAdapter;
-import com.siki.malltrip.view.ProductListAdapter;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,16 +23,21 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private ListView requirements;
-    private AutoCompleteTextView productPicker;
+    private ListView demands;
+    private AutoCompleteTextView categoryPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        requirements = findViewById(R.id.lvDemandList);
-        productPicker = findViewById(R.id.itemPicker);
+        demands = findViewById(R.id.lvDemandList);
+        demands.setOnItemClickListener((parent, view, position, id) -> {
+            Demand selectedDemand = (Demand) parent.getItemAtPosition(position);
+            Toast.makeText(this, selectedDemand.getCategory().getName(), Toast.LENGTH_LONG).show();
+        });
+
+        categoryPicker = findViewById(R.id.categoryPicker);
 
         dataService = ((MallTripApp) getApplication()).getDataService();
 
@@ -45,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        //TODO: not working !!!
-        ProductListAdapter productListAdapter = new ProductListAdapter(this, dataService.getProducts());
-        productPicker.setAdapter(productListAdapter);
+        List<String> categoryList = dataService.getCategories().stream().map(Category::getName).collect(Collectors.toList());
+        ArrayAdapter<String> productListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categoryList);
+        categoryPicker.setAdapter(productListAdapter);
 
-        DemandListAdapter demandListAdapter = new DemandListAdapter(this, dataService.getRequiredProducts());
-        requirements.setAdapter(demandListAdapter);
+        DemandListAdapter demandListAdapter = new DemandListAdapter(this, dataService.getDemands());
+        demands.setAdapter(demandListAdapter);
     }
 
     public void btnNewShopping(View v) {
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addDemand(View view) {
-
+        dataService.addDemand(categoryPicker.getText().toString());
+        ((DemandListAdapter) demands.getAdapter()).notifyDataSetChanged();
     }
 }

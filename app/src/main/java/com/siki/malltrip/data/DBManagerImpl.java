@@ -1,7 +1,7 @@
 package com.siki.malltrip.data;
 
+import com.siki.malltrip.model.Category;
 import com.siki.malltrip.model.Demand;
-import com.siki.malltrip.model.Product;
 import com.siki.malltrip.model.DemandStatus;
 
 import java.util.ArrayList;
@@ -9,75 +9,75 @@ import java.util.List;
 
 public class DBManagerImpl implements DBManager {
     @Override
-    public List<Demand> getRequiredProducts() {
+    public List<Demand> getDemands() {
         List<Demand> Demands = new ArrayList<>();
 
-        Demands.add(new Demand.Builder()
-                .setProduct(new Product.Builder()
+        /*Demands.add(new Demand.Builder()
+                .setCategory(new Category.Builder()
                     .setName("Joghurt")
                     .build())
                 .setDemandStatus(DemandStatus.REQUIRED)
                 .build());
 
         Demands.add(new Demand.Builder()
-                .setProduct(new Product.Builder()
+                .setCategory(new Category.Builder()
                         .setName("Sajt")
                         .build())
                 .setDemandStatus(DemandStatus.REQUIRED)
                 .build());
 
         Demands.add(new Demand.Builder()
-                .setProduct(new Product.Builder()
+                .setCategory(new Category.Builder()
                         .setName("Mosópor")
                         .build())
                 .setDemandStatus(DemandStatus.REQUIRED)
                 .build());
 
         Demands.add(new Demand.Builder()
-                .setProduct(new Product.Builder()
+                .setCategory(new Category.Builder()
                         .setName("Cipő")
                         .build())
                 .setDemandStatus(DemandStatus.REQUIRED)
                 .build());
 
         Demands.add(new Demand.Builder()
-                .setProduct(new Product.Builder()
+                .setCategory(new Category.Builder()
                         .setName("Alma")
                         .build())
                 .setDemandStatus(DemandStatus.REQUIRED)
-                .build());
+                .build());*/
 
         return Demands;
     }
 
     @Override
-    public List<Product> getProducts() {
-        List<Product> products = new ArrayList<>();
+    public List<Category> getCategories() {
+        List<Category> categories = new ArrayList<>();
 
-        products.add(new Product.Builder()
+        categories.add(new Category.Builder()
                 .setName("Joghurt")
                 .build());
 
-        products.add(new Product.Builder()
+        categories.add(new Category.Builder()
                 .setName("Sajt")
                 .build());
 
-        products.add(new Product.Builder()
+        categories.add(new Category.Builder()
                 .setName("Mosópor")
                 .build());
 
-        products.add(new Product.Builder()
+        categories.add(new Category.Builder()
                 .setName("Cipő")
                 .build());
 
-        products.add(new Product.Builder()
+        categories.add(new Category.Builder()
                 .setName("Alma")
                 .build());
 
-        products.add(new Product.Builder()
+        categories.add(new Category.Builder()
                 .setName("Asztal")
                 .build());
 
-        return products;
+        return categories;
     }
 }

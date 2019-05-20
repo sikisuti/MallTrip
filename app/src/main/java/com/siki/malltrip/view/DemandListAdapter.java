@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.siki.malltrip.R;
 import com.siki.malltrip.model.Demand;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DemandListAdapter extends ArrayAdapter<Demand> {
@@ -29,7 +28,7 @@ public class DemandListAdapter extends ArrayAdapter<Demand> {
         // Lookup view for data population
         TextView tvDemandItemName = (TextView) convertView.findViewById(R.id.tvDemandItemName);
         // Populate the data into the template view using the data object
-        tvDemandItemName.setText(demand.getProduct().getName());
+        tvDemandItemName.setText(demand.getCategory().getName());
         // Return the completed view to render on screen
         return convertView;
     }

@@ -1,25 +1,55 @@
 package com.siki.malltrip.model;
 
 public class Product {
-    private String name;
+    private Category category;
+    private String manufacturer;
+    private String productName;
 
-    public String getName() {
-        return name;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     private Product(Builder builder) {
-        this.name = builder.name;
+
     }
 
     public static class Builder {
-        private String name;
+        private Category category;
+        private String manufacturer;
+        private String productName;
 
-        public Builder setName(String name) {
-            this.name = name;
+        public Builder setCategory(Category category) {
+            this.category = category;
+            return this;
+        }
+
+        public Builder setManufacturer(String manufacturer) {
+            this.manufacturer = manufacturer;
+            return this;
+        }
+
+        public Builder setProductName(String productName) {
+            this.productName = productName;
             return this;
         }
 

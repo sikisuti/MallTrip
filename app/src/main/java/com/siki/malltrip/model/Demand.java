@@ -1,15 +1,15 @@
 package com.siki.malltrip.model;
 
 public class Demand {
-    private Product product;
+    private Category category;
     private DemandStatus demandStatus;
 
-    public Product getProduct() {
-        return product;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public DemandStatus getDemandStatus() {
@@ -21,16 +21,16 @@ public class Demand {
     }
 
     private Demand(Builder builder) {
-        this.product = builder.product;
+        this.category = builder.category;
         this.demandStatus = builder.demandStatus;
     }
 
     public static class Builder {
-        private Product product;
+        private Category category;
         private DemandStatus demandStatus;
 
-        public Builder setProduct(Product product) {
-            this.product = product;
+        public Builder setCategory(Category category) {
+            this.category = category;
             return this;
         }
 

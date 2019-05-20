@@ -1,47 +1,49 @@
 package com.siki.malltrip.data;
 
-import android.util.Log;
-
 import com.siki.malltrip.model.Demand;
 import com.siki.malltrip.model.DemandStatus;
-import com.siki.malltrip.model.Product;
+import com.siki.malltrip.model.Category;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DataServiceImpl implements DataService {
     DBManager dbManager;
 
-    List<Demand> requiredProducts;
-    List<Product> products;
+    List<Demand> demands;
+    List<Category> categories;
 
     public DataServiceImpl(DBManager dbManager) {
         this.dbManager = dbManager;
     }
 
     @Override
-    public List<Demand> getRequiredProducts() {
-        if (requiredProducts == null) {
-            requiredProducts = dbManager.getRequiredProducts();
+    public List<Demand> getDemands() {
+        if (demands == null) {
+            demands = dbManager.getDemands();
         }
 
-        return requiredProducts;
+        return demands;
     }
 
     @Override
-    public List<Product> getProducts() {
-        if (products == null) {
-            products = dbManager.getProducts();
+    public List<Category> getCategories() {
+        if (categories == null) {
+            categories = dbManager.getCategories();
         }
 
-        return products;
+        return categories;
     }
 
     @Override
-    public void addRequiredProduct(Product product) {
-        products.add(product);
-        requiredProducts.add(new Demand.Builder()
-                .setProduct(product)
+    public void addDemand(String categoryName) {
+        Optional<Category> foundCategory = categories.stream().filter(c -> c.getName().equalsIgnoreCase(categoryName)).findFirst();
+        Category category = foundCategory.orElseGet(() -> new Category.Builder()
+                .setName(categoryName)
+                .build());
+
+        demands.add(new Demand.Builder()
+                .setCategory(category)
                 .setDemandStatus(DemandStatus.REQUIRED)
                 .build());
     }

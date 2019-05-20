@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Mall Trip</string>
-    <string name="add_item">Add product</string>
+    <string name="add_item">Add category</string>
     <string name="title_activity_add_item">AddItemActivity</string>
     <string name="name">Név</string>
     <string name="category">Kategória</string>

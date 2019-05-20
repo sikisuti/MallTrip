@@ -1,12 +1,12 @@
 package com.siki.malltrip.data;
 
+import com.siki.malltrip.model.Category;
 import com.siki.malltrip.model.Demand;
-import com.siki.malltrip.model.Product;
 
 import java.util.List;
 
 public interface DataService {
-    List<Demand> getRequiredProducts();
-    List<Product> getProducts();
-    void addRequiredProduct(Product product);
+    List<Demand> getDemands();
+    List<Category> getCategories();
+    void addDemand(String categoryName);
 }
