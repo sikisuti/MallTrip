@@ -1,6 +1,8 @@
 package com.siki.malltrip.model;
 
-public class Demand {
+import java.io.Serializable;
+
+public class Demand implements Serializable {
     private Category category;
     private DemandStatus demandStatus;
 

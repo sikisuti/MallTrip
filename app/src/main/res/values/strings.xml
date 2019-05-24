@@ -6,4 +6,5 @@
     <string name="category">Kategória</string>
     <string name="new_item_name_hint">Add meg az új áru nevét</string>
     <string name="select_item">Válassz árut</string>
+    <string name="choose_type">Válassz típust</string>
 </resources>

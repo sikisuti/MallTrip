@@ -1,5 +1,6 @@
 package com.siki.malltrip;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,8 @@ import com.siki.malltrip.view.DemandListAdapter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity {
     DataService dataService;
 
@@ -34,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         demands = findViewById(R.id.lvDemandList);
         demands.setOnItemClickListener((parent, view, position, id) -> {
             Demand selectedDemand = (Demand) parent.getItemAtPosition(position);
+            Intent intent = new Intent(this, DemandActivity.class);
+            intent.putExtra("demand", selectedDemand);
+            startActivity(intent);
             Toast.makeText(this, selectedDemand.getCategory().getName(), Toast.LENGTH_LONG).show();
         });
 
