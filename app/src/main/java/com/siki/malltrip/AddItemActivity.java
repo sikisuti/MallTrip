@@ -1,15 +1,12 @@
 package com.siki.malltrip;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 
 import com.siki.malltrip.data.DataService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AddItemActivity extends AppCompatActivity {
     private DataService dataService;

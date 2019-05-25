@@ -1,11 +1,7 @@
 package com.siki.malltrip;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.siki.malltrip.model.Demand;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DemandActivity extends AppCompatActivity {
 

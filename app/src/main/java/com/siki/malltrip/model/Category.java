@@ -1,8 +1,29 @@
 package com.siki.malltrip.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "Categories")
 public class Category {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "type")
     private String type;
+
+    @ColumnInfo(name = "name")
+    @NonNull
     private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -19,6 +40,8 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Category() {}
 
     private Category(Builder builder) {
         this.type = builder.type;

@@ -1,11 +1,10 @@
 package com.siki.malltrip;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
@@ -18,8 +17,6 @@ import com.siki.malltrip.view.DemandListAdapter;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
     DataService dataService;
