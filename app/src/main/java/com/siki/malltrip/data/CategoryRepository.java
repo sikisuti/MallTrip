@@ -1,10 +1,9 @@
 package com.siki.malltrip.data;
 
+import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-
-import com.siki.malltrip.model.Category;
 
 import java.util.List;
 
@@ -12,8 +11,9 @@ public class CategoryRepository {
     private CategoryDao categoryDao;
     private LiveData<List<Category>> allCategories;
 
-    public CategoryRepository(MallTripRoomDatabase database) {
-        categoryDao = database.categoryDao();
+    public CategoryRepository(Application application) {
+        MallTripRoomDatabase db = MallTripRoomDatabase.getDatabase(application);
+        categoryDao = db.categoryDao();
         allCategories = categoryDao.getAllCategories();
     }
 

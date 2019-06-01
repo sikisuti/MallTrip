@@ -1,5 +1,7 @@
 package com.siki.malltrip.model;
 
+import com.siki.malltrip.data.Category;
+
 import java.io.Serializable;
 
 public class Demand implements Serializable {

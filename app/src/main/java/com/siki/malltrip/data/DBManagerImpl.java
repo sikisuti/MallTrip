@@ -1,8 +1,6 @@
 package com.siki.malltrip.data;
 
-import com.siki.malltrip.model.Category;
 import com.siki.malltrip.model.Demand;
-import com.siki.malltrip.model.DemandStatus;
 
 import java.util.ArrayList;
 import java.util.List;

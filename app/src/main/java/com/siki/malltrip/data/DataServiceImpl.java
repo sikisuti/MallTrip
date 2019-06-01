@@ -2,7 +2,6 @@ package com.siki.malltrip.data;
 
 import com.siki.malltrip.model.Demand;
 import com.siki.malltrip.model.DemandStatus;
-import com.siki.malltrip.model.Category;
 
 import java.util.List;
 import java.util.Optional;

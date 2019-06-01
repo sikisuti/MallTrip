@@ -1,4 +1,4 @@
-package com.siki.malltrip.model;
+package com.siki.malltrip.data;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
