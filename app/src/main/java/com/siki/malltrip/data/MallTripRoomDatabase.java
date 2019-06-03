@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Category.class}, version = 1, exportSchema = false)
+@Database(entities = {Category.class}, version = 1)
 public abstract class MallTripRoomDatabase extends RoomDatabase {
     public abstract CategoryDao categoryDao();
 
@@ -20,7 +20,8 @@ public abstract class MallTripRoomDatabase extends RoomDatabase {
             synchronized (MallTripRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            MallTripRoomDatabase.class, "word_database")
+                            MallTripRoomDatabase.class, "malltrip_database")
+                            .fallbackToDestructiveMigration()
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }

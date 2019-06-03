@@ -3,6 +3,8 @@ package com.siki.malltrip;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -25,7 +27,6 @@ import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
     DataService dataService;
-    CategoryRepository categoryRepository;
 
     private static final String TAG = "MainActivity";
 
@@ -37,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mainViewModel.getAllCategories().observe(this, categories -> {
+            List<String> categoryList = categories.stream().map(Category::getName).collect(Collectors.toList());
+            ArrayAdapter<String> productListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categoryList);
+            categoryPicker.setAdapter(productListAdapter);
+        });
 
         demands = findViewById(R.id.lvDemandList);
         demands.setOnItemClickListener((parent, view, position, id) -> {
@@ -57,12 +64,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        /*LiveData<List<Category>> categoryData = mainViewModel.getAllCategories();
+        List<Category> categories = mainViewModel.getAllCategories().getValue();
         List<String> categoryList = mainViewModel.getAllCategories().getValue().stream().map(Category::getName).collect(Collectors.toList());
         ArrayAdapter<String> productListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categoryList);
-        categoryPicker.setAdapter(productListAdapter);
+        categoryPicker.setAdapter(productListAdapter);*/
 
-        DemandListAdapter demandListAdapter = new DemandListAdapter(this, dataService.getDemands());
-        demands.setAdapter(demandListAdapter);
+        /*DemandListAdapter demandListAdapter = new DemandListAdapter(this, dataService.getDemands());
+        demands.setAdapter(demandListAdapter);*/
     }
 
     public void btnNewShopping(View v) {
